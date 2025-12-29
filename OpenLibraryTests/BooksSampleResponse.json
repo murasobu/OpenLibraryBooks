@@ -1,0 +1,79 @@
+{
+	"works": [
+		{
+			"title": "Alice's Adventures in Wonderland",
+			"cover_id": 10527843,
+			"authors": [
+				{
+					"name": "Lewis Carroll"
+				}
+			]
+		},
+		{
+			"title": "Frankenstein or The Modern Prometheus",
+			"cover_id": 12356249,
+			"authors": [
+				{
+					"name": "Mary Shelley"
+				}
+			]
+		},
+		{
+			"title": "The Wonderful Wizard of Oz",
+			"cover_id": 552443,
+			"authors": [
+				{
+					"name": "L. Frank Baum"
+				}
+			]
+		},
+		{
+			"title": "The Time Machine",
+			"cover_id": 9009316,
+			"authors": [
+				{
+					"name": "H. G. Wells"
+				}
+			]
+		},
+		{
+			"title": "The Lost World",
+			"cover_id": 8231444,
+			"authors": [
+				{
+					"name": "Arthur Conan Doyle"
+				}
+			]
+		},
+		{
+			"title": "Dracula",
+			"cover_id": 12216503,
+			"authors": [
+				{
+					"name": "Bram Stoker"
+				}
+			]
+		},
+		{
+			"title": "Brave New World",
+			"cover_id": 8231823,
+			"authors": [
+				{
+					"name": "Aldous Huxley"
+				}
+			]
+		},
+		{
+			"title": "Flatland",
+			"cover_id": 10069547,
+			"authors": [
+				{
+					"name": "Edwin Abbott Abbott"
+				},
+				{
+					"name": "Abbott"
+				}
+			]
+		}
+	]
+}
