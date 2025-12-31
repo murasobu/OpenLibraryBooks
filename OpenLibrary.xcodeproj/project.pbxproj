@@ -28,6 +28,7 @@
 		7C8E7D362F02D2AB00B81B6F /* OpenLibraryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D252F02CA7F00BBBFD5 /* OpenLibraryUITests.swift */; };
 		7C8E7D372F02D2AB00B81B6F /* OpenLibraryUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D262F02CA7F00BBBFD5 /* OpenLibraryUITestsLaunchTests.swift */; };
 		7C8E7D382F02D2B900B81B6F /* BooksSampleResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 7C320D222F02CA7F00BBBFD5 /* BooksSampleResponse.json */; };
+		7CB828572F05762100B35068 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7CB828562F05762100B35068 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CB828572F05762100B35068 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +238,7 @@
 			);
 			name = OpenLibrary;
 			packageProductDependencies = (
+				7CB828562F05762100B35068 /* Kingfisher */,
 			);
 			productName = SciFiLibrary;
 			productReference = 831ECB192EF5979900C557AD /* OpenLibrary.app */;
@@ -313,6 +316,9 @@
 			);
 			mainGroup = 831ECB102EF5979900C557AD;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 831ECB1A2EF5979900C557AD /* Products */;
 			projectDirPath = "";
@@ -538,7 +544,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -571,7 +577,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -603,7 +609,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				MARKETING_VERSION = 1.0;
@@ -625,7 +631,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				MARKETING_VERSION = 1.0;
@@ -646,7 +652,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				MARKETING_VERSION = 1.0;
@@ -667,7 +673,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2F5CUZHNZT;
+				DEVELOPMENT_TEAM = R975DQM49V;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				MARKETING_VERSION = 1.0;
@@ -723,6 +729,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.6.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CB828562F05762100B35068 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 831ECB112EF5979900C557AD /* Project object */;
 }

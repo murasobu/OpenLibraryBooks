@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct BooksView: View {
 
@@ -67,15 +68,14 @@ struct BookRow: View {
 
 	var body: some View {
 		HStack {
-			AsyncImage(url: book.coverURL) { image in
-				image
-					.resizable()
-					.aspectRatio(contentMode: .fill)
-					.frame(width: 50, height: 70)
-			} placeholder: {
-				Color.gray
-					.frame(width: 50, height: 70)
-			}
+            KFImage(book.coverURL)
+                .placeholder {
+                    Color.gray
+                        .frame(width: 50, height: 70)
+                }
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 50, height: 70)
 
 			VStack(alignment: .leading, spacing: 12) {
 				Text(book.title)
