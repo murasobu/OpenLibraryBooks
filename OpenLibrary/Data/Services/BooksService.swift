@@ -7,7 +7,11 @@
 
 import Foundation
 
-class BooksService {
+protocol BooksService {
+    func getbooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book]
+}
+
+struct BooksServiceImpl: BooksService {
 
 	private let client: HttpClient
 
@@ -15,8 +19,8 @@ class BooksService {
 		self.client = client
 	}
 
-	func getbooks(genre: Genre) async throws -> [Book] {
-		let request = BooksRequest(genre: genre)
+    func getbooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
+		let request = BooksRequest(genre: genre, offset: offset, pageSize: pageSize)
 		do {
 			let data = try await client.getResult(from: request.urlRequest)
 

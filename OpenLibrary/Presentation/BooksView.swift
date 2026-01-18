@@ -27,7 +27,15 @@ struct BooksView: View {
 			case .loaded(let books):
 				List(books) { book in
 					BookRow(book: book)
+                        .onAppear {
+                            if book == books.last {
+                                Task { await viewModel.getMoreBooks() }
+                            }
+                        }
 				}
+                if viewModel.isLoadingMore {
+                    ProgressView("Loading More")
+                }
 
 			case .error(let message):
 				ErrorView(message: message)

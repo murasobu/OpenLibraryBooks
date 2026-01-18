@@ -51,7 +51,7 @@ class MockBooksRepository: BooksRepository {
 		self.result = result
 	}
 
-	func fetchBooks(genre: Genre) async throws -> [Book] {
+	func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
 		switch result {
 		case .success(let books):
 			return books

@@ -18,11 +18,11 @@ struct BooksRepositoryImpl {
 
 extension BooksRepositoryImpl: BooksRepository {
 
-	func fetchBooks(genre: Genre) async throws -> [Book] {
+	func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
 		var errorToThrow: Error?
 
 		do {
-			let books = try await booksService.getbooks(genre: genre)
+			let books = try await booksService.getbooks(genre: genre, offset: offset, pageSize: pageSize)
 
 			// Once the books are fetched from BE, also store them locally
 			localStorage.save(books: books, genre: genre)
@@ -47,7 +47,7 @@ extension BooksRepositoryImpl: BooksRepository {
 
 struct PreviewBooksRepositoryImpl: BooksRepository {
 
-	func fetchBooks(genre: Genre) async throws -> [Book] {
+	func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
 		return []
 	}
 }

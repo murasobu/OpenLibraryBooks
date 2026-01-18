@@ -6,5 +6,5 @@
 //
 
 protocol BooksRepository {
-	func fetchBooks(genre: Genre) async throws -> [Book]
+    func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book]
 }

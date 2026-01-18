@@ -12,7 +12,7 @@ struct ContentView: View {
 	@State private var path = NavigationPath()
 
 	@StateObject private var booksViewModel: BooksViewModel = {
-		let booksService = BooksService()
+		let booksService = BooksServiceImpl()
 		let localStorage = FileManagerStorage()
 		let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
 		return BooksViewModel(repository: booksRepository)

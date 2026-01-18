@@ -19,22 +19,41 @@ final class BooksViewModel: ObservableObject {
 
 	@Published private(set) var state: BooksViewState = .loading
 	@Published var selectedGenre: Genre = .scienceFiction
-	private let repository: BooksRepository
+    @Published private(set) var offset: Int = 0
+    @Published private(set) var pageSize: Int = 20
+    var isLoadingMore: Bool = false
+    private let repository: BooksRepository
+    private var fetchedBooks: [Book] = []
 
-	init(repository: BooksRepository) {
+    init(repository: BooksRepository) {
 		self.repository = repository
 	}
 
-	func getBooks() async {
-		state = .loading
+    func getBooks() async {
+        state = .loading
 		do {
-			let books = try await repository.fetchBooks(genre: selectedGenre)
-			state = .loaded(books)
+			fetchedBooks = try await repository.fetchBooks(genre: selectedGenre, offset: 0, pageSize: 20)
+			state = .loaded(fetchedBooks)
+            offset += pageSize
 		} catch {
 			state = .error(error.localizedDescription)
 		}
-
 	}
+    
+    func getMoreBooks() async {
+        isLoadingMore = true
+        
+        defer { isLoadingMore = false }
+        
+        do {
+            let books = try await repository.fetchBooks(genre: selectedGenre, offset: offset, pageSize: pageSize)
+            fetchedBooks.append(contentsOf: books)
+            state = .loaded(fetchedBooks)
+            offset += pageSize
+        } catch {
+            state = .error(error.localizedDescription)
+        }
+    }
 }
 
 // MARK: - ViewModels for Previews

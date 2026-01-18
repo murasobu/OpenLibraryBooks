@@ -10,9 +10,13 @@ import Foundation
 struct BooksRequest: Request {
 
 	private let genre: Genre
-
-	init(genre: Genre) {
+    private let offset: Int
+    private let pageSize: Int
+    
+    init(genre: Genre, offset: Int, pageSize: Int) {
 		self.genre = genre
+        self.offset = offset
+        self.pageSize = pageSize
 	}
 
 	var path: String {
@@ -20,7 +24,7 @@ struct BooksRequest: Request {
 	}
 
 	var query: String {
-		return "limit=20"
+		return "offset=\(offset)&limit=\(pageSize)"
 	}
 
 	var urlRequest: URLRequest {
