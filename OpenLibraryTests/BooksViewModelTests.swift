@@ -8,27 +8,29 @@
 import XCTest
 @testable import OpenLibrary
 
+@MainActor
 final class BooksViewModelTests: XCTestCase {
 
 	var sut: BooksViewModel!
 
 	override func tearDown() {
+        super.tearDown()
 		sut = nil
 	}
 
 	func test_fetchBooks_setsLoadingState_beforeRepositoryCall() async {
-		sut = await BooksViewModel(repository: MockBooksRepository(result: .success([])))
+		sut = BooksViewModel(repository: MockBooksRepository(result: .success([])))
 		XCTAssertEqual(sut.state, .loading)
 	}
-
+    
 	func test_getBooks_setsLoadedState_whenRepositorySuccessful() async {
-		sut = await BooksViewModel(repository: MockBooksRepository(result: .success(Book.sampleBooks)))
+		sut = BooksViewModel(repository: MockBooksRepository(result: .success(Book.sampleBooks)))
 		await sut.getBooks()
 		XCTAssertEqual(sut.state, .loaded(Book.sampleBooks))
 	}
 
 	func test_getBooks_setsErrorState_whenRepositoryFails() async {
-		sut = await BooksViewModel(repository: MockBooksRepository(result: .failure(URLError(.notConnectedToInternet))))
+		sut = BooksViewModel(repository: MockBooksRepository(result: .failure(URLError(.notConnectedToInternet))))
 		await sut.getBooks()
 		XCTAssertEqual(sut.state, .error(URLError(.notConnectedToInternet).localizedDescription))
 	}

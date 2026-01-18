@@ -14,6 +14,7 @@ enum BooksViewState: Equatable {
 	case error(String)
 }
 
+@MainActor
 final class BooksViewModel: ObservableObject {
 
 	@Published private(set) var state: BooksViewState = .loading

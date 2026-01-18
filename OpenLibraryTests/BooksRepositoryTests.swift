@@ -18,9 +18,9 @@ final class BooksRepositoryTests: XCTestCase {
 
 	func test_fetchBooks_returnsBooksFromWorkingService() async throws {
 		// Given the subject under test with a working books service and empty local storage
-		let booksService = await MockBooksService(result: .success(Book.sampleBooks))
+		let booksService = MockBooksService(result: .success(Book.sampleBooks))
 		let localStorage = MockLocalStorage(result: .empty)
-		sut = await BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+		sut = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
 
 		// Fetch books from the working service
 		let books = try await sut.fetchBooks(genre: .scienceFiction)
@@ -31,8 +31,8 @@ final class BooksRepositoryTests: XCTestCase {
 	func test_fetchBooks_returnsBooksFromLocalStorageOnServiceFailure() async throws {
 		// Given the subject under test with a failing service and pre-loaded local storage
 		let booksService = MockBooksService(result: .failure(URLError(.notConnectedToInternet)))
-		let localStorage = await MockLocalStorage(result: .loaded(Book.sampleBooks))
-		sut = await BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+		let localStorage = MockLocalStorage(result: .loaded(Book.sampleBooks))
+		sut = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
 
 		// Testing if the locally stored books are fetched when the service fails
 		let books = try await sut.fetchBooks(genre: .scienceFiction)
