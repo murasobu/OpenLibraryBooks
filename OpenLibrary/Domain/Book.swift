@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Book: Codable, Identifiable, Equatable {
+struct Book: Codable, Identifiable, Equatable, Hashable {
 
-	struct Author: Codable, Equatable {
+	struct Author: Codable, Equatable, Hashable {
 		let name: String
 	}
 

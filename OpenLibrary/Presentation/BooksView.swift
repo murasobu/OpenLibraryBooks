@@ -26,13 +26,18 @@ struct BooksView: View {
 
 			case .loaded(let books):
 				List(books) { book in
-					BookRow(book: book)
-                        .onAppear {
-                            if book == books.last {
-                                Task { await viewModel.getMoreBooks() }
+                    NavigationLink(value: book) {
+                        BookRow(book: book)
+                            .onAppear {
+                                if book == books.last {
+                                    Task { await viewModel.getMoreBooks() }
+                                }
                             }
-                        }
+                    }
 				}
+                .navigationDestination(for: Book.self) { book in
+                    BookDetailView(book: book)
+                }
                 if viewModel.isLoadingMore {
                     ProgressView("Loading More")
                 }

@@ -19,9 +19,19 @@ struct ContentView: View {
 	}()
 
 	var body: some View {
-		NavigationStack(path: $path) {
-			BooksView(viewModel: booksViewModel)
-		}
+        TabView {
+            SearchView()
+                .tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+            
+            NavigationStack(path: $path) {
+                BooksView(viewModel: booksViewModel)
+            }
+            .tabItem {
+                Label("Books", systemImage: "book")
+            }
+        }
 	}
 }
 
