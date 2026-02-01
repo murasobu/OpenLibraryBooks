@@ -22,14 +22,14 @@ struct ContentView: View {
         TabView {
             SearchView()
                 .tabItem {
-                    Label("Search", systemImage: "magnifyingglass")
+                    Label(.searchTab, systemImage: "magnifyingglass")
                 }
             
             NavigationStack(path: $path) {
                 BooksView(viewModel: booksViewModel)
             }
             .tabItem {
-                Label("Books", systemImage: "book")
+                Label(.myBooksTab, systemImage: "book")
             }
         }
 	}

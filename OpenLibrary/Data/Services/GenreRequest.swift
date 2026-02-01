@@ -1,5 +1,5 @@
 //
-//  BooksRequest.swift
+//  GenreRequest.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct BooksRequest: Request {
+struct GenreRequest: Request {
 
 	private let genre: Genre
     private let offset: Int

@@ -70,6 +70,7 @@ extension BooksViewModel {
 	static var previewForLoadedState: BooksViewModel {
 		let viewModel = BooksViewModel(repository: PreviewBooksRepositoryImpl())
 		let book = Book(
+            id: "1",
 			title: "Preview Book",
 			authors: [Book.Author(name: "Writer 1"), Book.Author(name: "Writer 2")],
 			coverId: 123456
