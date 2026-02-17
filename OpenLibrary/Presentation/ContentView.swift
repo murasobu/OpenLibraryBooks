@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
 
-	@State private var path = NavigationPath()
-
 	private var booksRepository: BooksRepository = {
 		let booksService = BooksServiceImpl()
 		let localStorage = FileManagerStorage()
@@ -24,12 +22,10 @@ struct ContentView: View {
                     Label(.searchTab, systemImage: "magnifyingglass")
                 }
             
-            NavigationStack(path: $path) {
-
-            }
-            .tabItem {
-                Label(.myBooksTab, systemImage: "book")
-            }
+            MyBooksView()
+                .tabItem {
+                    Label(.myBooksTab, systemImage: "book")
+                }
         }
 	}
 }

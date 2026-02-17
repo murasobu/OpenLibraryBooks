@@ -24,12 +24,12 @@ struct GenreRequest: Request {
 	}
 
 	var query: String {
-		return "offset=\(offset)&limit=\(pageSize)"
+		return "?offset=\(offset)&limit=\(pageSize)"
 	}
 
 	var urlRequest: URLRequest {
 		get throws {
-			guard let url = URL(string: base + path + "?" + query) else {
+			guard let url = URL(string: base + path + query) else {
 				throw NetworkError.invalidUrlRequest
 			}
 			return URLRequest(url: url)

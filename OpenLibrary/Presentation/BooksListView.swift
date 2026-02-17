@@ -1,5 +1,5 @@
 //
-//  BooksView.swift
+//  BooksListView.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-struct BooksView: View {
+struct BooksListView: View {
 
 	@ObservedObject var viewModel: BooksViewModel
 	let isPreview: Bool
@@ -124,13 +124,13 @@ struct ErrorView: View {
 // MARK: - Previews for different view states
 
 #Preview("Loading State") {
-	BooksView(viewModel: .previewForLoadingState, isPreview: true)
+    BooksListView(viewModel: .previewForLoadingState, isPreview: true)
 }
 
 #Preview("Loaded State") {
-	BooksView(viewModel: .previewForLoadedState, isPreview: true)
+    BooksListView(viewModel: .previewForLoadedState, isPreview: true)
 }
 
 #Preview("Error State") {
-	BooksView(viewModel: .previewForErrorState, isPreview: true)
+    BooksListView(viewModel: .previewForErrorState, isPreview: true)
 }

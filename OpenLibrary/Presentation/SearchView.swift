@@ -43,7 +43,7 @@ struct SearchView: View {
             .searchable(text: $query, placement: .automatic, prompt: "Search books")
             .submitLabel(.search)
             .navigationDestination(for: Genre.self) { genre in
-                BooksView(
+                BooksListView(
                     viewModel: BooksViewModel(
                         repository: booksRepository,
                         selectedGenre: genre
