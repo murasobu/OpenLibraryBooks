@@ -11,22 +11,21 @@ struct ContentView: View {
 
 	@State private var path = NavigationPath()
 
-	@StateObject private var booksViewModel: BooksViewModel = {
+	private var booksRepository: BooksRepository = {
 		let booksService = BooksServiceImpl()
 		let localStorage = FileManagerStorage()
-		let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
-		return BooksViewModel(repository: booksRepository)
+		return BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
 	}()
 
 	var body: some View {
         TabView {
-            SearchView()
+            SearchView(booksRepository: booksRepository)
                 .tabItem {
                     Label(.searchTab, systemImage: "magnifyingglass")
                 }
             
             NavigationStack(path: $path) {
-                BooksView(viewModel: booksViewModel)
+
             }
             .tabItem {
                 Label(.myBooksTab, systemImage: "book")

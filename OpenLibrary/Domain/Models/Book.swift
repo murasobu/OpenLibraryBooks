@@ -15,12 +15,14 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
     
     let id: String
     let title: String
+    let synopsis: String?
     let authors: [Author]
     let coverId: Int
     
     enum CodingKeys: String, CodingKey {
         case id = "key"
         case title
+        case synopsis = "description"
         case authors
         case coverId = "cover_id"
     }
@@ -38,18 +40,21 @@ extension Book {
 		Book(
             id: "1",
             title: "Dune",
+            synopsis: "",
 			authors: [Author(name: "Frank Herbert")],
 			coverId: 8254151
 		),
 		Book(
             id: "2",
 			title: "Neuromancer",
+            synopsis: "",
 			authors: [Author(name: "William Gibson")],
 			coverId: 8231996
 		),
 		Book(
             id: "3",
 			title: "Foundation",
+            synopsis: "",
 			authors: [Author(name: "Isaac Asimov")],
 			coverId: 8226191
 		)

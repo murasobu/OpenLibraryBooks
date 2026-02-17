@@ -5,8 +5,8 @@
 //  Created by Santa Gurung on 19/12/2025.
 //
 
-import SwiftUI
 import Combine
+import Foundation
 
 enum BooksViewState: Equatable {
 	case loading
@@ -18,19 +18,22 @@ enum BooksViewState: Equatable {
 final class BooksViewModel: ObservableObject {
 
 	@Published private(set) var state: BooksViewState = .loading
-	@Published var selectedGenre: Genre = .scienceFiction
+	@Published var selectedGenre: Genre
     @Published private(set) var offset: Int = 0
     @Published private(set) var pageSize: Int = 20
     var isLoadingMore: Bool = false
     private let repository: BooksRepository
     private var fetchedBooks: [Book] = []
 
-    init(repository: BooksRepository) {
+    init(repository: BooksRepository, selectedGenre: Genre = .scienceFiction) {
 		self.repository = repository
+        self.selectedGenre = selectedGenre
 	}
 
     func getBooks() async {
         state = .loading
+        offset = 0
+        fetchedBooks = []
 		do {
 			fetchedBooks = try await repository.fetchBooks(genre: selectedGenre, offset: 0, pageSize: 20)
 			state = .loaded(fetchedBooks)
@@ -72,6 +75,7 @@ extension BooksViewModel {
 		let book = Book(
             id: "1",
 			title: "Preview Book",
+            synopsis: "",
 			authors: [Book.Author(name: "Writer 1"), Book.Author(name: "Writer 2")],
 			coverId: 123456
 		)

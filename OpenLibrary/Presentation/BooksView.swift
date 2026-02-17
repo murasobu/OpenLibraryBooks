@@ -50,17 +50,17 @@ struct BooksView: View {
 			guard !isPreview else { return }
 			await viewModel.getBooks()
 		}
-		.navigationTitle("Books")
+        .navigationTitle(viewModel.selectedGenre.title)
 		.toolbar {
-			ToolbarItem(placement: .topBarLeading) {
-				Picker("Genre", selection: $viewModel.selectedGenre) {
-					ForEach(Genre.allCases, id: \.self) { genre in
-						Text(genre.rawValue)
-							.tag(genre)
-					}
-				}
-				.pickerStyle(.menu)
-			}
+//			ToolbarItem(placement: .topBarLeading) {
+//				Picker("Genre", selection: $viewModel.selectedGenre) {
+//					ForEach(Genre.allCases, id: \.self) { genre in
+//						Text(genre.rawValue)
+//							.tag(genre)
+//					}
+//				}
+//				.pickerStyle(.menu)
+//			}
 
 			ToolbarItem(placement: .topBarTrailing) {
 				Button {

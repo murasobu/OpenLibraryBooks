@@ -12,6 +12,9 @@ struct BookDetailView: View {
     let book: Book
     
     var body: some View {
-        Text(book.title)
+        VStack(alignment: .leading) {
+            Text(book.title)
+            Text(book.synopsis ?? "No synopsis available.")
+        }
     }
 }

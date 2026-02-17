@@ -11,4 +11,22 @@ enum Genre: String, CaseIterable {
 	case action
 	case trueCrime = "true_crime"
 	case sliceOfLife = "slice_of_life"
+    case horror
+    case thriller
+    case mysteryAndDetective = "mystery_and_detective_stories"
+    case autobiography
+    
+    var title: String {
+        switch self {
+        case .scienceFiction: "Science Fiction"
+        case .romance: "Romance"
+        case .action: "Action"
+        case .trueCrime: "True Crime"
+        case .sliceOfLife: "Slice of Life"
+        case .horror: "Horror"
+        case .thriller: "Thriller"
+        case .mysteryAndDetective: "Mystery and Detective Stories"
+        case .autobiography: "Autobiography"
+        }
+    }
 }
