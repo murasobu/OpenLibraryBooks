@@ -93,7 +93,7 @@ struct BookRow: View {
 			VStack(alignment: .leading, spacing: 12) {
 				Text(book.title)
 					.font(.headline)
-				Text(book.authors.map { $0.name }.joined(separator: ", "))
+				Text(book.authors.joined(separator: ", "))
 					.font(.caption)
 			}
 		}

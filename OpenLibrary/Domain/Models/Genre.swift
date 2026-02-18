@@ -10,7 +10,6 @@ enum Genre: String, CaseIterable {
 	case romance
 	case action
 	case trueCrime = "true_crime"
-	case sliceOfLife = "slice_of_life"
     case horror
     case thriller
     case mysteryAndDetective = "mystery_and_detective_stories"
@@ -22,7 +21,6 @@ enum Genre: String, CaseIterable {
         case .romance: "Romance"
         case .action: "Action"
         case .trueCrime: "True Crime"
-        case .sliceOfLife: "Slice of Life"
         case .horror: "Horror"
         case .thriller: "Thriller"
         case .mysteryAndDetective: "Mystery and Detective Stories"

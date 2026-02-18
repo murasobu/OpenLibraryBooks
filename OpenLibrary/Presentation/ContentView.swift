@@ -9,15 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
 
-	private var booksRepository: BooksRepository = {
-		let booksService = BooksServiceImpl()
-		let localStorage = FileManagerStorage()
-		return BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
-	}()
-
+    private var searchNavigationFactory: SearchNavigationFactory = {
+        let booksService = BooksServiceImpl()
+        let localStorage = FileManagerStorage()
+        let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+        return SearchNavigationFactory(booksRepository: booksRepository)
+    }()
+    
+    private var searchViewModel: SearchViewModel = {
+        let searchService = SearchServiceImpl()
+        let searchRepository = SearchRepositoryImpl(searchService: searchService)
+        return SearchViewModel(searchRepository: searchRepository)
+    }()
+    
 	var body: some View {
         TabView {
-            SearchView(booksRepository: booksRepository)
+            SearchView(viewModel: searchViewModel, navigationFactory: searchNavigationFactory)
                 .tabItem {
                     Label(.searchTab, systemImage: "magnifyingglass")
                 }

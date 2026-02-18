@@ -16,7 +16,7 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
     let id: String
     let title: String
     let synopsis: String?
-    let authors: [Author]
+    let authors: [String]
     let coverId: Int
     
     enum CodingKeys: String, CodingKey {
@@ -27,8 +27,36 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
         case coverId = "cover_id"
     }
     
+    private enum FallbackCodingKeys: String, CodingKey {
+        case authorFromSearch = "author_name"
+        case coverIdFromSearch = "cover_i"
+    }
+
     var coverURL: URL? {
         return URL(string: "https://covers.openlibrary.org/b/id/\(coverId)-M.jpg")
+    }
+}
+
+extension Book {
+    
+    init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let fallbackContainer = try decoder.container(keyedBy: FallbackCodingKeys.self)
+
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.synopsis = try container.decodeIfPresent(String.self, forKey: .synopsis)
+        
+        if let authorObjects = try container.decodeIfPresent([Author].self, forKey: .authors) {
+            self.authors = authorObjects.map { $0.name }
+        } else {
+            self.authors = try fallbackContainer.decode([String].self, forKey: .authorFromSearch)
+        }
+        if let cover = try container.decodeIfPresent(Int.self, forKey: .coverId) {
+            self.coverId = cover
+        } else {
+            self.coverId = try fallbackContainer.decode(Int.self, forKey: .coverIdFromSearch)
+        }
     }
 }
 
@@ -41,21 +69,21 @@ extension Book {
             id: "1",
             title: "Dune",
             synopsis: "",
-			authors: [Author(name: "Frank Herbert")],
+			authors: ["Frank Herbert"],
 			coverId: 8254151
 		),
 		Book(
             id: "2",
 			title: "Neuromancer",
             synopsis: "",
-			authors: [Author(name: "William Gibson")],
+			authors: ["William Gibson"],
 			coverId: 8231996
 		),
 		Book(
             id: "3",
 			title: "Foundation",
             synopsis: "",
-			authors: [Author(name: "Isaac Asimov")],
+			authors: ["Isaac Asimov"],
 			coverId: 8226191
 		)
 	]

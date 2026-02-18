@@ -24,7 +24,7 @@ struct SearchRequest: Request {
     }
 
     var query: String {
-        return "?\(userQuery)&offset=\(offset)&limit=\(pageSize)"
+        return "?q=\(userQuery)&offset=\(offset)&limit=\(pageSize)"
     }
 
     var urlRequest: URLRequest {
