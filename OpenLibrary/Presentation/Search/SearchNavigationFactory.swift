@@ -10,14 +10,18 @@ import SwiftUI
 struct SearchNavigationFactory {
     let booksRepository: BooksRepository
 
-    func destination(
-        for genre: Genre
-    ) -> some View {
+    func destination(genre: Genre) -> some View {
         BooksListView(
-            viewModel: BooksViewModel(
+            viewModel: BooksListViewModel(
                 repository: booksRepository,
                 selectedGenre: genre
             )
+        )
+    }
+    
+    func destination(book: Book) -> some View {
+        BookDetailView(
+            book: book
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  BooksViewModel.swift
+//  BooksListViewModel.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
@@ -15,7 +15,7 @@ enum BooksViewState: Equatable {
 }
 
 @MainActor
-final class BooksViewModel: ObservableObject {
+final class BooksListViewModel: ObservableObject {
 
 	@Published private(set) var state: BooksViewState = .loading
 	@Published var selectedGenre: Genre
@@ -61,17 +61,17 @@ final class BooksViewModel: ObservableObject {
 
 // MARK: - ViewModels for Previews
 
-extension BooksViewModel {
+extension BooksListViewModel {
 
-	static var previewForLoadingState: BooksViewModel {
-		let viewModel = BooksViewModel(repository: PreviewBooksRepositoryImpl())
+	static var previewForLoadingState: BooksListViewModel {
+		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
 		viewModel.state = .loading
 
 		return viewModel
 	}
 
-	static var previewForLoadedState: BooksViewModel {
-		let viewModel = BooksViewModel(repository: PreviewBooksRepositoryImpl())
+	static var previewForLoadedState: BooksListViewModel {
+		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
 		let book = Book(
             id: "1",
 			title: "Preview Book",
@@ -84,8 +84,8 @@ extension BooksViewModel {
 		return viewModel
 	}
 
-	static var previewForErrorState: BooksViewModel {
-		let viewModel = BooksViewModel(repository: PreviewBooksRepositoryImpl())
+	static var previewForErrorState: BooksListViewModel {
+		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
 		viewModel.state = .error("No Sci-fi books available")
 
 		return viewModel

@@ -34,7 +34,7 @@
 		7C8E7D2E2F02D28A00B81B6F /* BooksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */; };
 		7C8E7D2F2F02D28A00B81B6F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D182F02CA7F00BBBFD5 /* Genre.swift */; };
 		7C8E7D302F02D28A00B81B6F /* BooksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */; };
-		7C8E7D312F02D28A00B81B6F /* BooksViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1B2F02CA7F00BBBFD5 /* BooksViewModel.swift */; };
+		7C8E7D312F02D28A00B81B6F /* BooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1B2F02CA7F00BBBFD5 /* BooksListViewModel.swift */; };
 		7C8E7D322F02D28A00B81B6F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1C2F02CA7F00BBBFD5 /* ContentView.swift */; };
 		7C8E7D332F02D28A00B81B6F /* OpenLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1F2F02CA7F00BBBFD5 /* OpenLibraryApp.swift */; };
 		7C8E7D342F02D2A300B81B6F /* BooksRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D212F02CA7F00BBBFD5 /* BooksRepositoryTests.swift */; };
@@ -80,7 +80,7 @@
 		7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepository.swift; sourceTree = "<group>"; };
 		7C320D182F02CA7F00BBBFD5 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListView.swift; sourceTree = "<group>"; };
-		7C320D1B2F02CA7F00BBBFD5 /* BooksViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksViewModel.swift; sourceTree = "<group>"; };
+		7C320D1B2F02CA7F00BBBFD5 /* BooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListViewModel.swift; sourceTree = "<group>"; };
 		7C320D1C2F02CA7F00BBBFD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7C320D1E2F02CA7F00BBBFD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C320D1F2F02CA7F00BBBFD5 /* OpenLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLibraryApp.swift; sourceTree = "<group>"; };
@@ -194,15 +194,11 @@
 		7C320D1D2F02CA7F00BBBFD5 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				7C2FD4AA2F465C5F00259319 /* SearchNavigationFactory.swift */,
-				7C8B397D2F4517AE00A11CF4 /* SearchViewModel.swift */,
-				7C6CB5572F2F97A800D4AD89 /* BookDetailViewModel.swift */,
-				7C80490E2F2D441100C50310 /* BookDetailView.swift */,
-				7C8048F92F2D437A00C50310 /* SearchView.swift */,
-				7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */,
-				7C320D1B2F02CA7F00BBBFD5 /* BooksViewModel.swift */,
 				7C320D1C2F02CA7F00BBBFD5 /* ContentView.swift */,
-				7C1341BD2F450247006F95DC /* MyBooksView.swift */,
+				7CFC17D72F47B39800A7BB67 /* MyBooks */,
+				7CFC17D62F47B36600A7BB67 /* BookDetail */,
+				7CFC17D52F47B35E00A7BB67 /* BooksList */,
+				7CFC17D42F47B1EB00A7BB67 /* Search */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -257,6 +253,42 @@
 				7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */,
 			);
 			path = RepositoryInterfaces;
+			sourceTree = "<group>";
+		};
+		7CFC17D42F47B1EB00A7BB67 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7C8048F92F2D437A00C50310 /* SearchView.swift */,
+				7C8B397D2F4517AE00A11CF4 /* SearchViewModel.swift */,
+				7C2FD4AA2F465C5F00259319 /* SearchNavigationFactory.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		7CFC17D52F47B35E00A7BB67 /* BooksList */ = {
+			isa = PBXGroup;
+			children = (
+				7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */,
+				7C320D1B2F02CA7F00BBBFD5 /* BooksListViewModel.swift */,
+			);
+			path = BooksList;
+			sourceTree = "<group>";
+		};
+		7CFC17D62F47B36600A7BB67 /* BookDetail */ = {
+			isa = PBXGroup;
+			children = (
+				7C80490E2F2D441100C50310 /* BookDetailView.swift */,
+				7C6CB5572F2F97A800D4AD89 /* BookDetailViewModel.swift */,
+			);
+			path = BookDetail;
+			sourceTree = "<group>";
+		};
+		7CFC17D72F47B39800A7BB67 /* MyBooks */ = {
+			isa = PBXGroup;
+			children = (
+				7C1341BD2F450247006F95DC /* MyBooksView.swift */,
+			);
+			path = MyBooks;
 			sourceTree = "<group>";
 		};
 		831ECB102EF5979900C557AD = {
@@ -441,7 +473,7 @@
 				7C8E7D2F2F02D28A00B81B6F /* Genre.swift in Sources */,
 				7C8B397A2F45151600A11CF4 /* SearchRepository.swift in Sources */,
 				7C8E7D302F02D28A00B81B6F /* BooksListView.swift in Sources */,
-				7C8E7D312F02D28A00B81B6F /* BooksViewModel.swift in Sources */,
+				7C8E7D312F02D28A00B81B6F /* BooksListViewModel.swift in Sources */,
 				7C8B397E2F4517B800A11CF4 /* SearchViewModel.swift in Sources */,
 				7C8E7D322F02D28A00B81B6F /* ContentView.swift in Sources */,
 				7C8B39762F45138100A11CF4 /* SearchService.swift in Sources */,
@@ -625,15 +657,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -660,15 +691,14 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibrary;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -687,9 +717,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R975DQM49V;
+				DEVELOPMENT_TEAM = 2F5CUZHNZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibraryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -709,9 +739,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R975DQM49V;
+				DEVELOPMENT_TEAM = 2F5CUZHNZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibraryTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -730,9 +760,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R975DQM49V;
+				DEVELOPMENT_TEAM = 2F5CUZHNZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibraryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -751,9 +781,9 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = R975DQM49V;
+				DEVELOPMENT_TEAM = 2F5CUZHNZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.santagurung.SciFiLibraryUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -28,9 +28,12 @@ final class SearchViewModel: ObservableObject {
     }
     
     func search(query: String) async {
+        let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { return }
+        
         state = .loading
         do {
-            searchedBooks = try await searchRepository.searchBooks(query: query, offset: 0, pageSize: 20)
+            searchedBooks = try await searchRepository.searchBooks(query: trimmed, offset: 0, pageSize: 20)
             if searchedBooks.isEmpty {
                 state = .empty("No books found for '\(query)'")
             } else {

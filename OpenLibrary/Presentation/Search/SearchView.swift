@@ -14,8 +14,8 @@ struct SearchView: View {
     @State private var query: String = ""
 
     let navigationFactory: SearchNavigationFactory
-    let genres: [Genre] = Genre.allCases
-    let columns: [GridItem] = [
+    private let genres: [Genre] = Genre.allCases
+    private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 120), spacing: 12)
     ]
 
@@ -36,7 +36,9 @@ struct SearchView: View {
 
                 case .loaded(let books):
                     List(books) { book in
-                        NavigationLink(value: book) {
+                        Button {
+                            path.append(book)
+                        } label: {
                             BookRow(book: book)
                         }
                     }
@@ -49,38 +51,27 @@ struct SearchView: View {
             .searchable(text: $query, placement: .automatic, prompt: "Search books")
             .submitLabel(.search)
             .navigationDestination(for: Genre.self) { genre in
-                navigationFactory.destination(for: genre)
+                navigationFactory.destination(genre: genre)
+            }
+            .navigationDestination(for: Book.self) { book in
+                navigationFactory.destination(book: book)
             }
         }
         .onSubmit(of: .search) {
-            let q = query.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !q.isEmpty else { return }
             Task {
-                await viewModel.search(query: q)
+                await viewModel.search(query: query)
             }
         }
-        .onChange(of: query) { newValue in
-            if newValue.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                viewModel.loadDefaultState()
+        .onChange(of: query, initial: false) { oldValue, newValue in
+            guard oldValue != newValue else {
+                return
             }
+            viewModel.loadDefaultState()
         }
     }
 }
 
-struct GenreCell: View {
-    let title: String
-
-    var body: some View {
-        Text(title)
-            .font(.subheadline)
-            .frame(maxWidth: .infinity, maxHeight: 80)
-            .padding(10)
-            .background(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(Color(.systemGray6))
-            )
-    }
-}
+// MARK: - Grid view containing genres
 
 struct GenresGridView: View {
     let genres: [Genre]
@@ -108,6 +99,25 @@ struct GenresGridView: View {
         .scrollBounceBehavior(.always)
     }
 }
+
+// MARK: - Cell containing genre
+
+struct GenreCell: View {
+    let title: String
+
+    var body: some View {
+        Text(title)
+            .font(.subheadline)
+            .frame(maxWidth: .infinity, maxHeight: 80)
+            .padding(10)
+            .background(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .fill(Color(.systemGray6))
+            )
+    }
+}
+
+// MARK: - Search view when no books are loaded
 
 struct EmptyView: View {
     

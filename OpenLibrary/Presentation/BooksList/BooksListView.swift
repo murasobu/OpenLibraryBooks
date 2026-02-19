@@ -10,10 +10,10 @@ import Kingfisher
 
 struct BooksListView: View {
 
-	@ObservedObject var viewModel: BooksViewModel
+	@ObservedObject var viewModel: BooksListViewModel
 	let isPreview: Bool
 
-	init(viewModel: BooksViewModel, isPreview: Bool = false) {
+	init(viewModel: BooksListViewModel, isPreview: Bool = false) {
 		self.viewModel = viewModel
 		self.isPreview = isPreview
 	}
