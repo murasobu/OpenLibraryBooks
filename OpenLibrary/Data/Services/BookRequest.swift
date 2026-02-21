@@ -8,15 +8,15 @@
 import Foundation
 
 struct BookRequest: Request {
-    
+
     private let id: String
-    
+
     var path: String {
         return "works/\(id).json"
     }
-    
+
     var query: String
-    
+
     var urlRequest: URLRequest {
         get throws {
             guard let url = URL(string: base + path) else {

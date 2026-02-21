@@ -12,7 +12,7 @@ struct SearchRequest: Request {
     private let userQuery: String
     private let offset: Int
     private let pageSize: Int
-    
+
     init(userQuery: String, offset: Int, pageSize: Int) {
         self.userQuery = userQuery
         self.offset = offset

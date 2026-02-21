@@ -8,17 +8,17 @@
 import Foundation
 
 struct Book: Codable, Identifiable, Equatable, Hashable {
-    
+
     struct Author: Codable, Equatable, Hashable {
         let name: String
     }
-    
+
     let id: String
     let title: String
     let synopsis: String?
     let authors: [String]
     let coverId: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id = "key"
         case title
@@ -26,7 +26,7 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
         case authors
         case coverId = "cover_id"
     }
-    
+
     private enum FallbackCodingKeys: String, CodingKey {
         case authorFromSearch = "author_name"
         case coverIdFromSearch = "cover_i"
@@ -38,7 +38,7 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
 }
 
 extension Book {
-    
+
     init(from decoder: any Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let fallbackContainer = try decoder.container(keyedBy: FallbackCodingKeys.self)
@@ -46,7 +46,7 @@ extension Book {
         self.id = try container.decode(String.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.synopsis = try container.decodeIfPresent(String.self, forKey: .synopsis)
-        
+
         if let authorObjects = try container.decodeIfPresent([Author].self, forKey: .authors) {
             self.authors = authorObjects.map { $0.name }
         } else {

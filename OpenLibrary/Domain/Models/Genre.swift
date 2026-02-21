@@ -14,7 +14,7 @@ enum Genre: String, CaseIterable {
     case thriller
     case mysteryAndDetective = "mystery_and_detective_stories"
     case autobiography
-    
+
     var title: String {
         switch self {
         case .scienceFiction: "Science Fiction"

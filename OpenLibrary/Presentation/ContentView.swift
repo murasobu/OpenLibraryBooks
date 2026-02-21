@@ -15,20 +15,20 @@ struct ContentView: View {
         let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
         return SearchNavigationFactory(booksRepository: booksRepository)
     }()
-    
+
     private var searchViewModel: SearchViewModel = {
         let searchService = SearchServiceImpl()
         let searchRepository = SearchRepositoryImpl(searchService: searchService)
         return SearchViewModel(searchRepository: searchRepository)
     }()
-    
+
 	var body: some View {
         TabView {
             SearchView(viewModel: searchViewModel, navigationFactory: searchNavigationFactory)
                 .tabItem {
                     Label(.searchTab, systemImage: "magnifyingglass")
                 }
-            
+
             MyBooksView()
                 .tabItem {
                     Label(.myBooksTab, systemImage: "book")

@@ -325,6 +325,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				7C5E9B072F4A07AA006A0814 /* PBXTargetDependency */,
 			);
 			name = OpenLibrary;
 			packageProductDependencies = (
@@ -408,6 +409,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				7C5E9B052F49FDEA006A0814 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 831ECB1A2EF5979900C557AD /* Products */;
@@ -505,6 +507,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7C5E9B072F4A07AA006A0814 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 7C5E9B062F4A07AA006A0814 /* SwiftLintBuildToolPlugin */;
+		};
 		831ECB282EF5979B00C557AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 831ECB182EF5979900C557AD /* OpenLibrary */;
@@ -839,6 +845,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7C5E9B052F49FDEA006A0814 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.63.2;
+			};
+		};
 		7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
@@ -850,6 +864,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7C5E9B062F4A07AA006A0814 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7C5E9B052F49FDEA006A0814 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
 		7CB828562F05762100B35068 /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7CB828552F05762100B35068 /* XCRemoteSwiftPackageReference "Kingfisher" */;

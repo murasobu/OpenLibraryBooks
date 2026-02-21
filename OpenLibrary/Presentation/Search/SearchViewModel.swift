@@ -17,20 +17,20 @@ enum SearchViewState: Equatable {
 
 @MainActor
 final class SearchViewModel: ObservableObject {
-    
+
     @Published private(set) var state: SearchViewState = .genres
-    
+
     private let searchRepository: SearchRepository
     private var searchedBooks: [Book] = []
-    
+
     init(searchRepository: SearchRepository) {
         self.searchRepository = searchRepository
     }
-    
+
     func search(query: String) async {
         let trimmed = query.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
-        
+
         state = .loading
         do {
             searchedBooks = try await searchRepository.searchBooks(query: trimmed, offset: 0, pageSize: 20)
@@ -43,7 +43,7 @@ final class SearchViewModel: ObservableObject {
             state = .empty(error.localizedDescription)
         }
     }
-    
+
     func loadDefaultState() {
         state = .genres
     }

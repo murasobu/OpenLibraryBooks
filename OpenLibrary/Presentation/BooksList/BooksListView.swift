@@ -11,7 +11,7 @@ import Kingfisher
 struct BooksListView: View {
 
 	@ObservedObject var viewModel: BooksListViewModel
-	let isPreview: Bool
+	private let isPreview: Bool
 
 	init(viewModel: BooksListViewModel, isPreview: Bool = false) {
 		self.viewModel = viewModel
@@ -35,9 +35,9 @@ struct BooksListView: View {
                             }
                     }
 				}
-                .navigationDestination(for: Book.self) { book in
-                    BookDetailView(book: book)
-                }
+//                .navigationDestination(for: Book.self) { book in
+//                    BookDetailView(book: book)
+//                }
                 if viewModel.isLoadingMore {
                     ProgressView("Loading More")
                 }
@@ -52,16 +52,6 @@ struct BooksListView: View {
 		}
         .navigationTitle(viewModel.selectedGenre.title)
 		.toolbar {
-//			ToolbarItem(placement: .topBarLeading) {
-//				Picker("Genre", selection: $viewModel.selectedGenre) {
-//					ForEach(Genre.allCases, id: \.self) { genre in
-//						Text(genre.rawValue)
-//							.tag(genre)
-//					}
-//				}
-//				.pickerStyle(.menu)
-//			}
-
 			ToolbarItem(placement: .topBarTrailing) {
 				Button {
 					Task { await viewModel.getBooks() }

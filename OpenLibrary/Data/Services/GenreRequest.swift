@@ -12,7 +12,7 @@ struct GenreRequest: Request {
 	private let genre: Genre
     private let offset: Int
     private let pageSize: Int
-    
+
     init(genre: Genre, offset: Int, pageSize: Int) {
 		self.genre = genre
         self.offset = offset

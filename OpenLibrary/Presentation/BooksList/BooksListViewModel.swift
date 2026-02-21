@@ -42,12 +42,12 @@ final class BooksListViewModel: ObservableObject {
 			state = .error(error.localizedDescription)
 		}
 	}
-    
+
     func getMoreBooks() async {
         isLoadingMore = true
-        
+
         defer { isLoadingMore = false }
-        
+
         do {
             let books = try await repository.fetchBooks(genre: selectedGenre, offset: offset, pageSize: pageSize)
             fetchedBooks.append(contentsOf: books)

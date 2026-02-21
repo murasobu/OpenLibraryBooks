@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct BookDetailView: View {
-    
+
     let book: Book
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text(book.title)

@@ -18,7 +18,7 @@ struct SearchNavigationFactory {
             )
         )
     }
-    
+
     func destination(book: Book) -> some View {
         BookDetailView(
             book: book

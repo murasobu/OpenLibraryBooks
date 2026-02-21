@@ -13,7 +13,6 @@ protocol URLSessionProtocol {
 
 extension URLSession: URLSessionProtocol { }
 
-
 // MARK: - URLSessionClient
 
 struct URLSessionClient {

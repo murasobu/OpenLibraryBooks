@@ -32,7 +32,7 @@ struct SearchView: View {
                     }
 
                 case .loading:
-                    ProgressView()
+                    ProgressView("Books Loading")
 
                 case .loaded(let books):
                     List(books) { book in
@@ -42,7 +42,7 @@ struct SearchView: View {
                             BookRow(book: book)
                         }
                     }
-                    
+
                 case .empty(let message):
                     EmptyView(message: message)
                 }
@@ -120,7 +120,7 @@ struct GenreCell: View {
 // MARK: - Search view when no books are loaded
 
 struct EmptyView: View {
-    
+
     let message: String
 
     var body: some View {
