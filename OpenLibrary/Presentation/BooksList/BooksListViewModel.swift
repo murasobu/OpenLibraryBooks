@@ -18,14 +18,14 @@ enum BooksViewState: Equatable {
 final class BooksListViewModel: ObservableObject {
 
 	@Published private(set) var state: BooksViewState = .loading
-	@Published var selectedGenre: Genre
+	@Published private(set) var selectedGenre: Genre
     @Published private(set) var offset: Int = 0
     @Published private(set) var pageSize: Int = 20
     var isLoadingMore: Bool = false
     private let repository: BooksRepository
     private var fetchedBooks: [Book] = []
 
-    init(repository: BooksRepository, selectedGenre: Genre = .scienceFiction) {
+    init(repository: BooksRepository, selectedGenre: Genre) {
 		self.repository = repository
         self.selectedGenre = selectedGenre
 	}
@@ -64,14 +64,14 @@ final class BooksListViewModel: ObservableObject {
 extension BooksListViewModel {
 
 	static var previewForLoadingState: BooksListViewModel {
-		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
+        let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl(), selectedGenre: .scienceFiction)
 		viewModel.state = .loading
 
 		return viewModel
 	}
 
 	static var previewForLoadedState: BooksListViewModel {
-		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
+        let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl(), selectedGenre: .scienceFiction)
 		let book = Book(
             id: "1",
 			title: "Preview Book",
@@ -85,7 +85,7 @@ extension BooksListViewModel {
 	}
 
 	static var previewForErrorState: BooksListViewModel {
-		let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl())
+        let viewModel = BooksListViewModel(repository: PreviewBooksRepositoryImpl(), selectedGenre: .scienceFiction)
 		viewModel.state = .error("No Sci-fi books available")
 
 		return viewModel

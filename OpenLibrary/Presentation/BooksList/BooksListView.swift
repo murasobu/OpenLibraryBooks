@@ -47,7 +47,7 @@ struct BooksListView: View {
 				ErrorView(message: message)
 			}
 		}
-		.task(id: viewModel.selectedGenre) {
+		.task {
 			guard !isPreview else { return }
 			await viewModel.getBooks()
 		}

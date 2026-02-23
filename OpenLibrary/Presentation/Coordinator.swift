@@ -33,18 +33,33 @@ class Coordinator: ObservableObject {
         return SearchViewModel(searchRepository: searchRepository)
     }()
 
+    private var booksListViewModels: [Genre: BooksListViewModel] = [:]
+
     @ViewBuilder
     func build(screen: Screen) -> some View {
         switch screen {
         case .search:
             SearchView(viewModel: searchViewModel)
+
         case .booksList(let genre):
-            BooksListView(viewModel: BooksListViewModel(repository: booksRepository, selectedGenre: genre))
+            let viewModel = booksListViewModels[genre] ?? {
+                let viewModel = BooksListViewModel(repository: booksRepository, selectedGenre: genre)
+                booksListViewModels[genre] = viewModel
+                return viewModel
+            }()
+            BooksListView(viewModel: viewModel)
+
         case .bookDetails(let book):
             BookDetailView(book: book)
+
         case .favourites:
             EmptyView()
         }
+    }
+
+    // Optionally, provide a method to clear/reset cache if needed:
+    func clearBooksListCache() {
+        booksListViewModels.removeAll()
     }
 
     func goTo(screen: Screen) {

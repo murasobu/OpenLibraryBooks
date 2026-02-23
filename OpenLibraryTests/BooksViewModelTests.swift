@@ -19,18 +19,18 @@ final class BooksListViewModelTests: XCTestCase {
 	}
 
 	func test_fetchBooks_setsLoadingState_beforeRepositoryCall() async {
-		sut = BooksListViewModel(repository: MockBooksRepository(result: .success([])))
+        sut = BooksListViewModel(repository: MockBooksRepository(result: .success([])), selectedGenre: .scienceFiction)
 		XCTAssertEqual(sut.state, .loading)
 	}
     
 	func test_getBooks_setsLoadedState_whenRepositorySuccessful() async {
-		sut = BooksListViewModel(repository: MockBooksRepository(result: .success(Book.sampleBooks)))
+        sut = BooksListViewModel(repository: MockBooksRepository(result: .success(Book.sampleBooks)), selectedGenre: .scienceFiction)
 		await sut.getBooks()
 		XCTAssertEqual(sut.state, .loaded(Book.sampleBooks))
 	}
 
 	func test_getBooks_setsErrorState_whenRepositoryFails() async {
-		sut = BooksListViewModel(repository: MockBooksRepository(result: .failure(URLError(.notConnectedToInternet))))
+        sut = BooksListViewModel(repository: MockBooksRepository(result: .failure(URLError(.notConnectedToInternet))), selectedGenre: .scienceFiction)
 		await sut.getBooks()
 		XCTAssertEqual(sut.state, .error(URLError(.notConnectedToInternet).localizedDescription))
 	}
