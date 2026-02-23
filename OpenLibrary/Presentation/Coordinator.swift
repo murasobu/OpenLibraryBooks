@@ -27,13 +27,6 @@ class Coordinator: ObservableObject {
         return BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
     }()
 
-    private var searchNavigationFactory: SearchNavigationFactory = {
-        let booksService = BooksServiceImpl()
-        let localStorage = FileManagerStorage()
-        let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
-        return SearchNavigationFactory(booksRepository: booksRepository)
-    }()
-
     private var searchViewModel: SearchViewModel = {
         let searchService = SearchServiceImpl()
         let searchRepository = SearchRepositoryImpl(searchService: searchService)
@@ -44,11 +37,11 @@ class Coordinator: ObservableObject {
     func build(screen: Screen) -> some View {
         switch screen {
         case .search:
-            SearchView(viewModel: searchViewModel, navigationFactory: searchNavigationFactory)
+            SearchView(viewModel: searchViewModel)
         case .booksList(let genre):
             BooksListView(viewModel: BooksListViewModel(repository: booksRepository, selectedGenre: genre))
-        case .bookDetails:
-            EmptyView()
+        case .bookDetails(let book):
+            BookDetailView(book: book)
         case .favourites:
             EmptyView()
         }

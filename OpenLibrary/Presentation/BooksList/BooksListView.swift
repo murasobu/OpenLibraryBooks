@@ -11,6 +11,7 @@ import Kingfisher
 struct BooksListView: View {
 
 	@ObservedObject var viewModel: BooksListViewModel
+    @EnvironmentObject var coordinator: Coordinator
 	private let isPreview: Bool
 
 	init(viewModel: BooksListViewModel, isPreview: Bool = false) {
@@ -25,8 +26,10 @@ struct BooksListView: View {
 				ProgressView("Books Loading")
 
 			case .loaded(let books):
-				List(books) { book in
-                    NavigationLink(value: book) {
+                List(books) { book in
+                    Button {
+                        coordinator.goTo(screen: .bookDetails(book))
+                    } label: {
                         BookRow(book: book)
                             .onAppear {
                                 if book == books.last {
@@ -34,10 +37,8 @@ struct BooksListView: View {
                                 }
                             }
                     }
-				}
-//                .navigationDestination(for: Book.self) { book in
-//                    BookDetailView(book: book)
-//                }
+                }
+
                 if viewModel.isLoadingMore {
                     ProgressView("Loading More")
                 }

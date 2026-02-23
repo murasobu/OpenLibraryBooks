@@ -13,7 +13,6 @@ struct SearchView: View {
     @EnvironmentObject var coordinator: Coordinator
     @State private var query: String = ""
 
-    let navigationFactory: SearchNavigationFactory
     private let genres: [Genre] = Genre.allCases
     private let columns: [GridItem] = [
         GridItem(.adaptive(minimum: 120), spacing: 12)
