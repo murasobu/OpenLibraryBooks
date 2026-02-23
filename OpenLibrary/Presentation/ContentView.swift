@@ -2,41 +2,37 @@
 //  ContentView.swift
 //  OpenLibrary
 //
-//  Created by Santa Gurung on 19/12/2025.
+//  Created by Suresh Gurung on 21/02/2026.
 //
 
 import SwiftUI
 
 struct ContentView: View {
 
-    private var searchNavigationFactory: SearchNavigationFactory = {
-        let booksService = BooksServiceImpl()
-        let localStorage = FileManagerStorage()
-        let booksRepository = BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
-        return SearchNavigationFactory(booksRepository: booksRepository)
-    }()
+    @StateObject var coordinator = Coordinator()
 
-    private var searchViewModel: SearchViewModel = {
-        let searchService = SearchServiceImpl()
-        let searchRepository = SearchRepositoryImpl(searchService: searchService)
-        return SearchViewModel(searchRepository: searchRepository)
-    }()
-
-	var body: some View {
+    var body: some View {
         TabView {
-            SearchView(viewModel: searchViewModel, navigationFactory: searchNavigationFactory)
-                .tabItem {
-                    Label(.searchTab, systemImage: "magnifyingglass")
-                }
+            NavigationStack(path: $coordinator.searchPath) {
+                coordinator.build(screen: .search)
+                    .navigationDestination(for: Screen.self) { screen in
+                        coordinator.build(screen: screen)
+                    }
+            }
+            .tabItem {
+                Label(.searchTab, systemImage: "magnifyingglass")
+            }
 
-            MyBooksView()
-                .tabItem {
-                    Label(.myBooksTab, systemImage: "book")
-                }
+            NavigationStack(path: $coordinator.myBooksPath) {
+                coordinator.build(screen: .favourites)
+                    .navigationDestination(for: Screen.self) { screen in
+                        coordinator.build(screen: screen)
+                    }
+            }
+            .tabItem {
+                Label(.myBooksTab, systemImage: "book")
+            }
         }
-	}
-}
-
-#Preview {
-	ContentView()
+        .environmentObject(coordinator)
+    }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct SearchView: View {
 
     @ObservedObject var viewModel: SearchViewModel
-    @State private var path = NavigationPath()
+    @EnvironmentObject var coordinator: Coordinator
     @State private var query: String = ""
 
     let navigationFactory: SearchNavigationFactory
@@ -20,43 +20,35 @@ struct SearchView: View {
     ]
 
     var body: some View {
-        NavigationStack(path: $path) {
-            Group {
-                switch viewModel.state {
-                case .genres:
-                    GenresGridView(
-                        genres: genres,
-                        columns: columns
-                    ) { genre in
-                        path.append(genre)
-                    }
-
-                case .loading:
-                    ProgressView("Books Loading")
-
-                case .loaded(let books):
-                    List(books) { book in
-                        Button {
-                            path.append(book)
-                        } label: {
-                            BookRow(book: book)
-                        }
-                    }
-
-                case .empty(let message):
-                    EmptyView(message: message)
+        Group {
+            switch viewModel.state {
+            case .genres:
+                GenresGridView(
+                    genres: genres,
+                    columns: columns
+                ) { genre in
+                    coordinator.goTo(screen: .booksList(genre))
                 }
-            }
-            .navigationTitle("Search")
-            .searchable(text: $query, placement: .automatic, prompt: "Search books")
-            .submitLabel(.search)
-            .navigationDestination(for: Genre.self) { genre in
-                navigationFactory.destination(genre: genre)
-            }
-            .navigationDestination(for: Book.self) { book in
-                navigationFactory.destination(book: book)
+
+            case .loading:
+                ProgressView("Books Loading")
+
+            case .loaded(let books):
+                List(books) { book in
+                    Button {
+                        coordinator.goTo(screen: .bookDetails(book))
+                    } label: {
+                        BookRow(book: book)
+                    }
+                }
+
+            case .empty(let message):
+                SearchErrorView(message: message)
             }
         }
+        .navigationTitle("Search")
+        .searchable(text: $query, placement: .automatic, prompt: "Search books")
+        .submitLabel(.search)
         .onSubmit(of: .search) {
             Task {
                 await viewModel.search(query: query)
@@ -119,7 +111,7 @@ struct GenreCell: View {
 
 // MARK: - Search view when no books are loaded
 
-struct EmptyView: View {
+struct SearchErrorView: View {
 
     let message: String
 
