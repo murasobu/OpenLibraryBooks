@@ -27,12 +27,12 @@
 		7C8E7D262F02D28A00B81B6F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D0B2F02CA7F00BBBFD5 /* HttpClient.swift */; };
 		7C8E7D272F02D28A00B81B6F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D0C2F02CA7F00BBBFD5 /* NetworkError.swift */; };
 		7C8E7D282F02D28A00B81B6F /* URLSessionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D0D2F02CA7F00BBBFD5 /* URLSessionClient.swift */; };
-		7C8E7D292F02D28A00B81B6F /* BooksRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D0F2F02CA7F00BBBFD5 /* BooksRepositoryImpl.swift */; };
+		7C8E7D292F02D28A00B81B6F /* GenreRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D0F2F02CA7F00BBBFD5 /* GenreRepositoryImpl.swift */; };
 		7C8E7D2A2F02D28A00B81B6F /* GenreRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D112F02CA7F00BBBFD5 /* GenreRequest.swift */; };
-		7C8E7D2B2F02D28A00B81B6F /* BooksService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D122F02CA7F00BBBFD5 /* BooksService.swift */; };
+		7C8E7D2B2F02D28A00B81B6F /* GenreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D122F02CA7F00BBBFD5 /* GenreService.swift */; };
 		7C8E7D2C2F02D28A00B81B6F /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D132F02CA7F00BBBFD5 /* Request.swift */; };
 		7C8E7D2D2F02D28A00B81B6F /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D162F02CA7F00BBBFD5 /* Book.swift */; };
-		7C8E7D2E2F02D28A00B81B6F /* BooksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */; };
+		7C8E7D2E2F02D28A00B81B6F /* GenreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D172F02CA7F00BBBFD5 /* GenreRepository.swift */; };
 		7C8E7D2F2F02D28A00B81B6F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D182F02CA7F00BBBFD5 /* Genre.swift */; };
 		7C8E7D302F02D28A00B81B6F /* BooksListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */; };
 		7C8E7D312F02D28A00B81B6F /* BooksListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C320D1B2F02CA7F00BBBFD5 /* BooksListViewModel.swift */; };
@@ -71,12 +71,12 @@
 		7C320D0B2F02CA7F00BBBFD5 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		7C320D0C2F02CA7F00BBBFD5 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		7C320D0D2F02CA7F00BBBFD5 /* URLSessionClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionClient.swift; sourceTree = "<group>"; };
-		7C320D0F2F02CA7F00BBBFD5 /* BooksRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepositoryImpl.swift; sourceTree = "<group>"; };
+		7C320D0F2F02CA7F00BBBFD5 /* GenreRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRepositoryImpl.swift; sourceTree = "<group>"; };
 		7C320D112F02CA7F00BBBFD5 /* GenreRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRequest.swift; sourceTree = "<group>"; };
-		7C320D122F02CA7F00BBBFD5 /* BooksService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksService.swift; sourceTree = "<group>"; };
+		7C320D122F02CA7F00BBBFD5 /* GenreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreService.swift; sourceTree = "<group>"; };
 		7C320D132F02CA7F00BBBFD5 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		7C320D162F02CA7F00BBBFD5 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
-		7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksRepository.swift; sourceTree = "<group>"; };
+		7C320D172F02CA7F00BBBFD5 /* GenreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRepository.swift; sourceTree = "<group>"; };
 		7C320D182F02CA7F00BBBFD5 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
 		7C320D1A2F02CA7F00BBBFD5 /* BooksListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListView.swift; sourceTree = "<group>"; };
 		7C320D1B2F02CA7F00BBBFD5 /* BooksListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BooksListViewModel.swift; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				7C8B397B2F45164800A11CF4 /* SearchRepositoryImpl.swift */,
-				7C320D0F2F02CA7F00BBBFD5 /* BooksRepositoryImpl.swift */,
+				7C320D0F2F02CA7F00BBBFD5 /* GenreRepositoryImpl.swift */,
 			);
 			path = RepositoryImplementation;
 			sourceTree = "<group>";
@@ -164,7 +164,7 @@
 				7C1341D42F450BEF006F95DC /* SearchRequest.swift */,
 				7C77BB4C2F2E8A520079ACAD /* BookRequest.swift */,
 				7C320D112F02CA7F00BBBFD5 /* GenreRequest.swift */,
-				7C320D122F02CA7F00BBBFD5 /* BooksService.swift */,
+				7C320D122F02CA7F00BBBFD5 /* GenreService.swift */,
 				7C320D132F02CA7F00BBBFD5 /* Request.swift */,
 				7C8B39752F45138100A11CF4 /* SearchService.swift */,
 			);
@@ -251,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				7C8B39792F45151000A11CF4 /* SearchRepository.swift */,
-				7C320D172F02CA7F00BBBFD5 /* BooksRepository.swift */,
+				7C320D172F02CA7F00BBBFD5 /* GenreRepository.swift */,
 			);
 			path = RepositoryInterfaces;
 			sourceTree = "<group>";
@@ -464,16 +464,16 @@
 				7C1341BE2F450247006F95DC /* MyBooksView.swift in Sources */,
 				7C80490F2F2D441A00C50310 /* BookDetailView.swift in Sources */,
 				7C8E7D282F02D28A00B81B6F /* URLSessionClient.swift in Sources */,
-				7C8E7D292F02D28A00B81B6F /* BooksRepositoryImpl.swift in Sources */,
+				7C8E7D292F02D28A00B81B6F /* GenreRepositoryImpl.swift in Sources */,
 				7C77BB4D2F2E8A5D0079ACAD /* BookRequest.swift in Sources */,
 				7C8048FA2F2D437E00C50310 /* SearchView.swift in Sources */,
 				7C8E7D2A2F02D28A00B81B6F /* GenreRequest.swift in Sources */,
-				7C8E7D2B2F02D28A00B81B6F /* BooksService.swift in Sources */,
+				7C8E7D2B2F02D28A00B81B6F /* GenreService.swift in Sources */,
 				7C1341D52F450BF3006F95DC /* SearchRequest.swift in Sources */,
 				7C8E7D2C2F02D28A00B81B6F /* Request.swift in Sources */,
 				7C8E7D2D2F02D28A00B81B6F /* Book.swift in Sources */,
 				7C6CB5582F2F97AC00D4AD89 /* BookDetailViewModel.swift in Sources */,
-				7C8E7D2E2F02D28A00B81B6F /* BooksRepository.swift in Sources */,
+				7C8E7D2E2F02D28A00B81B6F /* GenreRepository.swift in Sources */,
 				7C8E7D2F2F02D28A00B81B6F /* Genre.swift in Sources */,
 				7C8B397A2F45151600A11CF4 /* SearchRepository.swift in Sources */,
 				7C8E7D302F02D28A00B81B6F /* BooksListView.swift in Sources */,

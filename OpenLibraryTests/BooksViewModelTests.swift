@@ -38,7 +38,7 @@ final class BooksListViewModelTests: XCTestCase {
 
 // MARK: - BooksRepository Mock
 
-class MockBooksRepository: BooksRepository {
+class MockBooksRepository: GenreRepository {
 
 	enum Result {
 		case success([Book])

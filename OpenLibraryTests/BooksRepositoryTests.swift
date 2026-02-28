@@ -10,7 +10,7 @@ import XCTest
 
 final class BooksRepositoryTests: XCTestCase {
 
-	var sut: BooksRepositoryImpl!
+	var sut: GenreRepositoryImpl!
 
 	override func tearDown() {
 		sut = nil
@@ -18,9 +18,9 @@ final class BooksRepositoryTests: XCTestCase {
 
 	func test_fetchBooks_returnsBooksFromWorkingService() async throws {
 		// Given the subject under test with a working books service and empty local storage
-		let booksService = await MockBooksService(result: .success(Book.sampleBooks))
+		let genreService = await MockGenreService(result: .success(Book.sampleBooks))
 		let localStorage = MockLocalStorage(result: .empty)
-		sut = await BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+		sut = await GenreRepositoryImpl(genreService: genreService, localStorage: localStorage)
 
 		// Fetch books from the working service
 		let books = try await sut.fetchBooks(genre: .scienceFiction, offset: 0, pageSize: 20)
@@ -30,9 +30,9 @@ final class BooksRepositoryTests: XCTestCase {
 
 	func test_fetchBooks_returnsBooksFromLocalStorageOnServiceFailure() async throws {
 		// Given the subject under test with a failing service and pre-loaded local storage
-		let booksService = MockBooksService(result: .failure(URLError(.notConnectedToInternet)))
+		let genreService = MockGenreService(result: .failure(URLError(.notConnectedToInternet)))
 		let localStorage = await MockLocalStorage(result: .loaded(Book.sampleBooks))
-		sut = await BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+		sut = await GenreRepositoryImpl(genreService: genreService, localStorage: localStorage)
 
 		// Testing if the locally stored books are fetched when the service fails
 		let books = try await sut.fetchBooks(genre: .scienceFiction, offset: 0, pageSize: 20)
@@ -43,7 +43,7 @@ final class BooksRepositoryTests: XCTestCase {
 
 // MARK: - BooksService Mock
 
-final class MockBooksService: BooksService {
+final class MockGenreService: GenreService {
 
 	enum Result {
 		case success([Book])

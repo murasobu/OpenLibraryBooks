@@ -21,10 +21,10 @@ class Coordinator: ObservableObject {
     @Published var searchPath: NavigationPath = NavigationPath()
     @Published var myBooksPath: NavigationPath = NavigationPath()
 
-    private var booksRepository: BooksRepository = {
-        let booksService = BooksServiceImpl()
+    private var genreRepository: GenreRepository = {
+        let genreService = GenreServiceImpl()
         let localStorage = FileManagerStorage()
-        return BooksRepositoryImpl(booksService: booksService, localStorage: localStorage)
+        return GenreRepositoryImpl(genreService: genreService, localStorage: localStorage)
     }()
 
     private var searchViewModel: SearchViewModel = {
@@ -43,7 +43,7 @@ class Coordinator: ObservableObject {
 
         case .booksList(let genre):
             let viewModel = booksListViewModels[genre] ?? {
-                let viewModel = BooksListViewModel(repository: booksRepository, selectedGenre: genre)
+                let viewModel = BooksListViewModel(repository: genreRepository, selectedGenre: genre)
                 booksListViewModels[genre] = viewModel
                 return viewModel
             }()

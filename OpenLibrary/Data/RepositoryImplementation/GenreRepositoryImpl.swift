@@ -1,28 +1,28 @@
 //
-//  BooksRepositoryImpl.swift
+//  GenreRepositoryImpl.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
 //
 
-struct BooksRepositoryImpl {
+struct GenreRepositoryImpl {
 
-	private let booksService: BooksService
+	private let genreService: GenreService
 	private let localStorage: LocalStorage
 
-	init(booksService: BooksService, localStorage: LocalStorage) {
-		self.booksService = booksService
+	init(genreService: GenreService, localStorage: LocalStorage) {
+		self.genreService = genreService
 		self.localStorage = localStorage
 	}
 }
 
-extension BooksRepositoryImpl: BooksRepository {
+extension GenreRepositoryImpl: GenreRepository {
 
 	func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
 		var errorToThrow: Error?
 
 		do {
-			let books = try await booksService.getbooks(genre: genre, offset: offset, pageSize: pageSize)
+			let books = try await genreService.getbooks(genre: genre, offset: offset, pageSize: pageSize)
 
 			// Once the books are fetched from BE, also store them locally
 			localStorage.save(books: books, genre: genre)
@@ -45,7 +45,7 @@ extension BooksRepositoryImpl: BooksRepository {
 
 // MARK: - Repositories for Previews
 
-struct PreviewBooksRepositoryImpl: BooksRepository {
+struct PreviewBooksRepositoryImpl: GenreRepository {
 
 	func fetchBooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book] {
 		return []

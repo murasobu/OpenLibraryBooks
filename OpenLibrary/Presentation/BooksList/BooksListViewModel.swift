@@ -22,10 +22,10 @@ final class BooksListViewModel: ObservableObject {
     @Published private(set) var offset: Int = 0
     @Published private(set) var pageSize: Int = 20
     var isLoadingMore: Bool = false
-    private let repository: BooksRepository
+    private let repository: GenreRepository
     private var fetchedBooks: [Book] = []
 
-    init(repository: BooksRepository, selectedGenre: Genre) {
+    init(repository: GenreRepository, selectedGenre: Genre) {
 		self.repository = repository
         self.selectedGenre = selectedGenre
 	}

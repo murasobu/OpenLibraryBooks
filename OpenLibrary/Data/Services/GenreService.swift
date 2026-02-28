@@ -1,5 +1,5 @@
 //
-//  BooksService.swift
+//  GenreService.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol BooksService {
+protocol GenreService {
     func getbooks(genre: Genre, offset: Int, pageSize: Int) async throws -> [Book]
 }
 
-struct BooksServiceImpl: BooksService {
+struct GenreServiceImpl: GenreService {
 
 	private let client: HttpClient
 
