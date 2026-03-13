@@ -16,8 +16,8 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
     let id: String
     let title: String
     let synopsis: String?
-    let authors: [String]
-    let coverId: Int
+    let authors: [String]?
+    let coverId: Int?
 
     enum CodingKeys: String, CodingKey {
         case id = "key"
@@ -33,6 +33,7 @@ struct Book: Codable, Identifiable, Equatable, Hashable {
     }
 
     var coverURL: URL? {
+        guard let coverId else { return nil }
         return URL(string: "https://covers.openlibrary.org/b/id/\(coverId)-M.jpg")
     }
 }
@@ -50,12 +51,12 @@ extension Book {
         if let authorObjects = try container.decodeIfPresent([Author].self, forKey: .authors) {
             self.authors = authorObjects.map { $0.name }
         } else {
-            self.authors = try fallbackContainer.decode([String].self, forKey: .authorFromSearch)
+            self.authors = try fallbackContainer.decodeIfPresent([String].self, forKey: .authorFromSearch)
         }
         if let cover = try container.decodeIfPresent(Int.self, forKey: .coverId) {
             self.coverId = cover
         } else {
-            self.coverId = try fallbackContainer.decode(Int.self, forKey: .coverIdFromSearch)
+            self.coverId = try fallbackContainer.decodeIfPresent(Int.self, forKey: .coverIdFromSearch)
         }
     }
 }
