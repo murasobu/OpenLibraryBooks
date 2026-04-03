@@ -1,5 +1,5 @@
 //
-//  BooksRepositoryTests.swift
+//  GenreRepositoryTests.swift
 //  OpenLibrary
 //
 //  Created by Santa Gurung on 19/12/2025.
@@ -8,7 +8,7 @@
 import XCTest
 @testable import OpenLibrary
 
-final class BooksRepositoryTests: XCTestCase {
+final class GenreRepositoryTests: XCTestCase {
 
 	var sut: GenreRepositoryImpl!
 

@@ -75,11 +75,10 @@ extension BooksListViewModel {
 		let book = Book(
             id: "1",
 			title: "Preview Book",
-            synopsis: "",
-			authors: ["Writer 1", "Writer 2"],
-			coverId: 123456
-		)
-		viewModel.state = .loaded([book])
+            authors: ["Writer 1", "Writer 2"],
+            coverId: 123456
+        )
+        viewModel.state = .loaded([book])
 
 		return viewModel
 	}

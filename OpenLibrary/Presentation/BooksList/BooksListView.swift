@@ -28,7 +28,7 @@ struct BooksListView: View {
 			case .loaded(let books):
                 List(books) { book in
                     Button {
-                        coordinator.goTo(screen: .bookDetails(book))
+                        coordinator.goTo(screen: .bookDetails(book.id))
                     } label: {
                         BookRow(book: book)
                             .onAppear {

@@ -11,11 +11,17 @@ struct BookRequest: Request {
 
     private let id: String
 
-    var path: String {
-        return "works/\(id).json"
+    init(id: String) {
+        self.id = id
     }
 
-    var query: String
+    var path: String {
+        return "\(id).json"
+    }
+
+    var query: String {
+        return ""
+    }
 
     var urlRequest: URLRequest {
         get throws {

@@ -1,0 +1,22 @@
+{
+    "docs": [
+        {
+            "author_name": ["J.R.R. Tolkien"],
+            "cover_i": 14625765,
+            "key": "/works/OL27448W",
+            "title": "The Lord of the Rings"
+        },
+        {
+            "author_name": ["J.R.R. Tolkien"],
+            "cover_i": 255844,
+            "key": "/works/OL14926019W",
+            "title": "Novels (Hobbit / Lord of the Rings)"
+        },
+        {
+            "author_name": ["Phil Anderson", "Philip A. Anderson"],
+            "cover_i": 1576186,
+            "key": "/works/OL2089932W",
+            "title": "The Lord of the Ring"
+        }
+    ]
+}

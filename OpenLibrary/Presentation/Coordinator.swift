@@ -10,7 +10,7 @@ import SwiftUI
 
 enum Screen: Hashable {
     case search
-    case bookDetails(Book)
+    case bookDetails(String)
     case booksList(Genre)
     case favourites
 }
@@ -25,6 +25,11 @@ class Coordinator: ObservableObject {
         let genreService = GenreServiceImpl()
         let localStorage = FileManagerStorage()
         return GenreRepositoryImpl(genreService: genreService, localStorage: localStorage)
+    }()
+
+    private var bookDetailRepository: BookDetailRepository = {
+        let bookDetailService = BookServiceImpl()
+        return BookDetailRepositoryImpl(bookDetailService: bookDetailService)
     }()
 
     private var searchViewModel: SearchViewModel = {
@@ -49,8 +54,9 @@ class Coordinator: ObservableObject {
             }()
             BooksListView(viewModel: viewModel)
 
-        case .bookDetails(let book):
-            BookDetailView(book: book)
+        case .bookDetails(let bookId):
+            let viewModel = BookDetailViewModel(bookId: bookId, repository: bookDetailRepository)
+            BookDetailView(viewModel: viewModel)
 
         case .favourites:
             EmptyView()
